@@ -1,0 +1,8 @@
+services:
+
+  mongo:
+    image: mongo:latest
+    restart: no
+    container_name: mongo-dbsp2-db
+    ports:
+      - "27018:27017"
