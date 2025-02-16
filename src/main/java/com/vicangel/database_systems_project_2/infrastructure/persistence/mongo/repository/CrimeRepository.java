@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Set;
 
 import com.vicangel.database_systems_project_2.common.dto.ResultPerDayDTO;
+import com.vicangel.database_systems_project_2.common.dto.ResultQ3DTO;
 import com.vicangel.database_systems_project_2.infrastructure.persistence.mongo.document.CrimeReportDocument;
 
 public interface CrimeRepository {
@@ -16,4 +17,6 @@ public interface CrimeRepository {
   List<CrimeReportDocument> q1(Date fromDate, Date toDate);
 
   List<ResultPerDayDTO> q2(Integer crimeCode1, Date fromDate, Date toDate);
+
+  List<ResultQ3DTO> q3(Date day);
 }

@@ -33,7 +33,7 @@ final class CrimeReportDataLoader implements CommandLineRunner {
   @Value("classpath:Crime_Data_from_2020_to_Present_20250214.csv")
   private Resource CSV_FILE;
   private static final char COMMA_DELIMITER = ',';
-  private static final int READ_LIMIT = 1000;
+  private static final int READ_LIMIT = 10_000;
 
   @Override
   public void run(String... args) throws IOException {

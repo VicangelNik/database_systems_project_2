@@ -23,6 +23,7 @@ import com.vicangel.database_systems_project_2.rest.dto.response.CrimeReportResp
 import com.vicangel.database_systems_project_2.rest.dto.response.CrimeReportsResponse;
 import com.vicangel.database_systems_project_2.rest.dto.response.InsertManyResponseDTO;
 import com.vicangel.database_systems_project_2.rest.dto.response.ResultsPerDayResponse;
+import com.vicangel.database_systems_project_2.rest.dto.response.ResultsQ3Response;
 import com.vicangel.database_systems_project_2.rest.mapper.CrimeReportRequestModelMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -67,11 +68,9 @@ final class CrimeReportController {
   /**
    * Find the three most common crimes committed –regardless of code 1, 2, 3, and 4– per area for a specific day.
    */
-  @GetMapping(value = "/crimes/day/three-common", produces = MediaType.APPLICATION_JSON_VALUE)
-  public ResponseEntity<Void> q3() {
-
-    // TODO
-    return new ResponseEntity<>(HttpStatus.OK);
+  @GetMapping(value = "/crimes/three-common/area", produces = MediaType.APPLICATION_JSON_VALUE)
+  public ResponseEntity<ResultsQ3Response> q3(@RequestParam("day") @DateTimeFormat(pattern = "MM/dd/yyyy") final Date day) {
+    return new ResponseEntity<>(new ResultsQ3Response(service.q3(day)), HttpStatus.OK);
   }
 
   /**

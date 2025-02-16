@@ -6,6 +6,7 @@ import java.util.Set;
 
 import com.vicangel.database_systems_project_2.business.model.CrimeReport;
 import com.vicangel.database_systems_project_2.common.dto.ResultPerDayDTO;
+import com.vicangel.database_systems_project_2.common.dto.ResultQ3DTO;
 
 public interface CrimeReportService {
 
@@ -14,4 +15,6 @@ public interface CrimeReportService {
   List<CrimeReport> q1(Date fromDate, Date toDate);
 
   List<ResultPerDayDTO> q2(Integer crimeCode1, Date fromDate, Date toDate);
+
+  List<ResultQ3DTO> q3(Date day);
 }

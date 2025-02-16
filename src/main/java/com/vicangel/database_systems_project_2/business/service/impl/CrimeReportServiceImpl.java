@@ -11,6 +11,7 @@ import com.vicangel.database_systems_project_2.business.mapper.CrimeReportModelE
 import com.vicangel.database_systems_project_2.business.model.CrimeReport;
 import com.vicangel.database_systems_project_2.business.service.CrimeReportService;
 import com.vicangel.database_systems_project_2.common.dto.ResultPerDayDTO;
+import com.vicangel.database_systems_project_2.common.dto.ResultQ3DTO;
 import com.vicangel.database_systems_project_2.infrastructure.persistence.mongo.repository.CrimeRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -36,5 +37,10 @@ final class CrimeReportServiceImpl implements CrimeReportService {
   @Override
   public List<ResultPerDayDTO> q2(Integer crimeCode1, Date fromDate, Date toDate) {
     return repository.q2(crimeCode1, fromDate, toDate);
+  }
+
+  @Override
+  public List<ResultQ3DTO> q3(Date day) {
+    return repository.q3(day);
   }
 }
