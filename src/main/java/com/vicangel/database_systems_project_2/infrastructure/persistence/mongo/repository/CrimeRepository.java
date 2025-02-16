@@ -7,4 +7,6 @@ import com.vicangel.database_systems_project_2.infrastructure.persistence.mongo.
 public interface CrimeRepository {
 
   long insertMany(final Set<CrimeReportDocument> documents);
+
+  boolean isCollectionEmpty();
 }

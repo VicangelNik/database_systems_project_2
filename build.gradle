@@ -28,6 +28,7 @@ dependencies {
   implementation 'org.springframework.boot:spring-boot-starter-web'
   implementation 'org.mapstruct:mapstruct:1.6.3'
   implementation 'org.fluttercode.datafactory:datafactory:0.8'
+  implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-csv:2.18.2'
   compileOnly 'org.projectlombok:lombok'
   developmentOnly 'org.springframework.boot:spring-boot-devtools'
   annotationProcessor 'org.projectlombok:lombok'

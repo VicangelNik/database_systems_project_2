@@ -1,4 +1,4 @@
-package com.vicangel.database_systems_project_2.rest.helper;
+package com.vicangel.database_systems_project_2.helper;
 
 import java.util.function.Function;
 

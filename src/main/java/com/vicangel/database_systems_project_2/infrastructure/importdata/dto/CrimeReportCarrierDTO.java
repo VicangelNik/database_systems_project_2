@@ -1,6 +1,6 @@
-package com.vicangel.database_systems_project_2.rest.dto.request;
+package com.vicangel.database_systems_project_2.infrastructure.importdata.dto;
 
-public record CrimeReportRequestDTO(Integer drNO,
+public record CrimeReportCarrierDTO(Integer drNO,
                                     String dateReported,
                                     String dateOCC,
                                     Integer timeOCC,

@@ -1,10 +1,11 @@
-package com.vicangel.database_systems_project_2.infrastructure.persistence.mongo;
+package com.vicangel.database_systems_project_2.infrastructure.importdata;
 
 import java.util.HashSet;
 import java.util.Set;
 
 import org.fluttercode.datafactory.impl.DataFactory;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import com.vicangel.database_systems_project_2.infrastructure.persistence.mongo.document.PoliceOfficerDocument;
@@ -12,10 +13,14 @@ import com.vicangel.database_systems_project_2.infrastructure.persistence.mongo.
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * <a href="https://github.com/andygibson/datafactory/blob/master/README.md">datafactory</a>
+ */
 @Component
 @RequiredArgsConstructor
 @Slf4j
-final class CrimeReportDataLoader implements CommandLineRunner {
+@Order(2)
+final class PoliceOfficersGenerator implements CommandLineRunner {
 
   private final PoliceOfficerDocumentRepository repository;
 

@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.vicangel.database_systems_project_2.business.service.CrimeReportService;
+import com.vicangel.database_systems_project_2.helper.ThrowingFunction;
 import com.vicangel.database_systems_project_2.rest.dto.request.CrimeReportBatchRequest;
 import com.vicangel.database_systems_project_2.rest.dto.response.InsertManyResponseDTO;
-import com.vicangel.database_systems_project_2.rest.helper.ThrowingFunction;
 import com.vicangel.database_systems_project_2.rest.mapper.CrimeReportRequestModelMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
