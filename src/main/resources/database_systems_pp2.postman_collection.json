@@ -1,0 +1,202 @@
+{
+	"info": {
+		"_postman_id": "df280667-5186-477d-a8fe-685d3477ca9b",
+		"name": "database_systems_pp2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13846149",
+		"_collection_link": "https://solar-eclipse-612497.postman.co/workspace/My-Workspace~8d2e5632-25e0-4d75-882b-7af54521f2e9/collection/13846149-df280667-5186-477d-a8fe-685d3477ca9b?action=share&source=collection_link&creator=13846149"
+	},
+	"item": [
+		{
+			"name": "insert police officer",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"policeOfficerRequests\": [\n    {\n      \"id\": 1000,\n      \"name\": \"name_82fe9117e97b\",\n      \"email\": \"email_b115d5ff1d1b\",\n      \"badgeNumber\": 0\n    }\n  ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/officers/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"officers",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "insert crime report",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"reports\": [\n    {\n      \"drNO\": 300234511,\n      \"dateReported\": \"03/01/2020 12:00:00 AM\",\n      \"dateOCC\": \"03/01/2020 12:00:00 AM\",\n      \"timeOCC\": 1800,\n      \"areaID\": \"01\",\n      \"areaName\": \"Central\",\n      \"reportingDistrictNo\": \"0182\",\n      \"part1_2\": 1,\n      \"crimeCode1\": 330,\n      \"crimeCodeDesc\": \"BURGLARY FROM VEHICLE\",\n      \"mocodes\": \"1822 1402 0344\",\n      \"victimAge\": 47,\n      \"victimSex\": \"M\",\n      \"victimDescent\": \"O\",\n      \"premisCode\": 128,\n      \"premisDesc\": \"BUS STOP/LAYOVER (ALSO QUERY 124)\",\n      \"weaponUsedCode\": null,\n      \"weaponUsedDesc\": \"weaponUsedDesc_fb03f74e1d8a\",\n      \"status\": \"IC\",\n      \"statusDesc\": \"Invest Cont\",\n      \"crimeCode1Copy\": 330,\n      \"crimeCode2\": 998,\n      \"crimeCode3\": null,\n      \"crimeCode4\": null,\n      \"location\": \"1000 S  FLOWER                       ST\",\n      \"crossStreet\": \"GIBSON                       ST\",\n      \"latitude\": 34.0444,\n      \"longitude\": -118.2628\n    }\n  ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/reports/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"reports",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "question 1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/reports/total/range?from=01/01/2020&to=03/01/2020",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"reports",
+						"total",
+						"range"
+					],
+					"query": [
+						{
+							"key": "from",
+							"value": "01/01/2020"
+						},
+						{
+							"key": "to",
+							"value": "03/01/2020"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "question 2",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/reports/day/crime/930/range?from=01/01/2020&to=03/01/2020",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"reports",
+						"day",
+						"crime",
+						"930",
+						"range"
+					],
+					"query": [
+						{
+							"key": "from",
+							"value": "01/01/2020"
+						},
+						{
+							"key": "to",
+							"value": "03/01/2020"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "question 3",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/reports/crimes/three-common/area?day=06/29/2020",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"reports",
+						"crimes",
+						"three-common",
+						"area"
+					],
+					"query": [
+						{
+							"key": "day",
+							"value": "06/29/2020"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "upvote report",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"officerId\": 14,\n  \"drNoReport\": 200407025\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/reports/upvote",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"reports",
+						"upvote"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
