@@ -17,7 +17,7 @@ import com.vicangel.database_systems_project_2.infrastructure.persistence.mongo.
 @Mapper(componentModel = ComponentModel.SPRING)
 public abstract class CrimeReportCarrierDocumentMapper {
 
-  protected SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss a");
+  protected SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM/dd/yyyy hh:mm:ss a");
 
   { // MongoDB stores times in UTC by default, and converts any local time representations into this form.
     simpleDateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));

@@ -1,5 +1,7 @@
 package com.vicangel.database_systems_project_2.business.service.impl;
 
+import java.util.Date;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -8,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.vicangel.database_systems_project_2.business.mapper.CrimeReportModelEntityMapper;
 import com.vicangel.database_systems_project_2.business.model.CrimeReport;
 import com.vicangel.database_systems_project_2.business.service.CrimeReportService;
+import com.vicangel.database_systems_project_2.common.dto.ResultPerDayDTO;
 import com.vicangel.database_systems_project_2.infrastructure.persistence.mongo.repository.CrimeRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -23,5 +26,15 @@ final class CrimeReportServiceImpl implements CrimeReportService {
   @Override
   public long insertMany(Set<CrimeReport> reports) {
     return repository.insertMany(reports.stream().map(mapper::mapToDocument).collect(Collectors.toSet()));
+  }
+
+  @Override
+  public List<CrimeReport> q1(Date fromDate, Date toDate) {
+    return repository.q1(fromDate, toDate).stream().map(mapper::mapToModel).toList();
+  }
+
+  @Override
+  public List<ResultPerDayDTO> q2(Integer crimeCode1, Date fromDate, Date toDate) {
+    return repository.q2(crimeCode1, fromDate, toDate);
   }
 }

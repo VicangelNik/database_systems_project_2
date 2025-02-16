@@ -13,11 +13,12 @@ import org.mapstruct.Named;
 
 import com.vicangel.database_systems_project_2.business.model.CrimeReport;
 import com.vicangel.database_systems_project_2.rest.dto.request.CrimeReportRequestDTO;
+import com.vicangel.database_systems_project_2.rest.dto.response.CrimeReportResponseDTO;
 
 @Mapper(componentModel = ComponentModel.SPRING)
 public abstract class CrimeReportRequestModelMapper {
 
-  protected SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss a");
+  protected SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM/dd/yyyy hh:mm:ss a");
 
   { // MongoDB stores times in UTC by default, and converts any local time representations into this form.
     simpleDateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
@@ -33,4 +34,6 @@ public abstract class CrimeReportRequestModelMapper {
 
     return simpleDateFormat.parse(dateString);
   }
+
+  public abstract CrimeReportResponseDTO mapToCrimeReportResponse(CrimeReport report);
 }

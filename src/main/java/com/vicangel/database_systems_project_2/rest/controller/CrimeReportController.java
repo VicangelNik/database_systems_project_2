@@ -1,20 +1,28 @@
 package com.vicangel.database_systems_project_2.rest.controller;
 
+import java.util.Date;
+import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.vicangel.database_systems_project_2.business.service.CrimeReportService;
 import com.vicangel.database_systems_project_2.helper.ThrowingFunction;
 import com.vicangel.database_systems_project_2.rest.dto.request.CrimeReportBatchRequest;
+import com.vicangel.database_systems_project_2.rest.dto.response.CrimeReportResponseDTO;
+import com.vicangel.database_systems_project_2.rest.dto.response.CrimeReportsResponse;
 import com.vicangel.database_systems_project_2.rest.dto.response.InsertManyResponseDTO;
+import com.vicangel.database_systems_project_2.rest.dto.response.ResultsPerDayResponse;
 import com.vicangel.database_systems_project_2.rest.mapper.CrimeReportRequestModelMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -33,20 +41,27 @@ final class CrimeReportController {
    * and sort them in descending order.
    */
   @GetMapping(value = "/total/range", produces = MediaType.APPLICATION_JSON_VALUE)
-  public ResponseEntity<Void> q1() {
+  public ResponseEntity<CrimeReportsResponse> q1(
+    @RequestParam("from") @DateTimeFormat(pattern = "MM/dd/yyyy") final Date fromDate,
+    @RequestParam("to") @DateTimeFormat(pattern = "MM/dd/yyyy") final Date toDate) {
 
-    // TODO
-    return new ResponseEntity<>(HttpStatus.OK);
+    final List<CrimeReportResponseDTO> crimeReports = service.q1(fromDate, toDate).stream()
+      .map(mapper::mapToCrimeReportResponse)
+      .toList();
+
+    return new ResponseEntity<>(new CrimeReportsResponse(crimeReports), HttpStatus.OK);
   }
 
   /**
    * Find the total number of reports per day for a specific “Crm Cd” and time range.
    */
-  @GetMapping(value = "/reports/day/crimes", produces = MediaType.APPLICATION_JSON_VALUE)
-  public ResponseEntity<Void> q2() {
-
-    // TODO
-    return new ResponseEntity<>(HttpStatus.OK);
+  @GetMapping(value = "/day/crime/{crimeCode1}/range", produces = MediaType.APPLICATION_JSON_VALUE)
+  public ResponseEntity<ResultsPerDayResponse> q2(
+    @PathVariable final Integer crimeCode1,
+    @RequestParam("from") @DateTimeFormat(pattern = "MM/dd/yyyy") final Date fromDate,
+    @RequestParam("to") @DateTimeFormat(pattern = "MM/dd/yyyy") final Date toDate
+  ) {
+    return new ResponseEntity<>(new ResultsPerDayResponse(service.q2(crimeCode1, fromDate, toDate)), HttpStatus.OK);
   }
 
   /**
