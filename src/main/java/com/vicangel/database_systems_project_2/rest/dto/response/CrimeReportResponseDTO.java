@@ -1,5 +1,7 @@
 package com.vicangel.database_systems_project_2.rest.dto.response;
 
+import java.util.Set;
+
 public record CrimeReportResponseDTO(Integer drNO,
                                      String dateReported,
                                      String dateOCC,
@@ -27,5 +29,6 @@ public record CrimeReportResponseDTO(Integer drNO,
                                      String location,
                                      String crossStreet,
                                      Double latitude,
-                                     Double longitude) {
+                                     Double longitude,
+                                     Set<Long> upvoteByOfficers) {
 }

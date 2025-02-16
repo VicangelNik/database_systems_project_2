@@ -25,6 +25,7 @@ public abstract class CrimeReportCarrierDocumentMapper {
 
   @Mapping(target = "dateReported", source = "dto.dateReported", qualifiedByName = "parseDateStringToDate")
   @Mapping(target = "dateOCC", source = "dto.dateOCC", qualifiedByName = "parseDateStringToDate")
+  @Mapping(target = "upvoteByOfficers", ignore = true)
   public abstract CrimeReportDocument mapToDocument(CrimeReportCarrierDTO dto) throws ParseException;
 
   @Named("parseDateStringToDate")

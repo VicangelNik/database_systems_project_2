@@ -26,6 +26,7 @@ public abstract class CrimeReportRequestModelMapper {
 
   @Mapping(target = "dateReported", source = "request.dateReported", qualifiedByName = "parseDateStringToDate")
   @Mapping(target = "dateOCC", source = "request.dateOCC", qualifiedByName = "parseDateStringToDate")
+  @Mapping(target = "upvoteByOfficers", ignore = true)
   public abstract CrimeReport mapToModel(CrimeReportRequestDTO request) throws ParseException;
 
   @Named("parseDateStringToDate")

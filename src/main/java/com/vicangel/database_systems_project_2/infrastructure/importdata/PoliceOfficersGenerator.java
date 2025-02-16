@@ -35,7 +35,7 @@ final class PoliceOfficersGenerator implements CommandLineRunner {
     for (long i = 0; i < 100; i++) {
       String name = df.getFirstName() + " " + df.getLastName();
       policeOfficers.add(
-        new PoliceOfficerDocument(i, name, df.getEmailAddress(), Integer.parseInt(df.getNumberText(5)), Set.of())
+        new PoliceOfficerDocument(i, name, df.getEmailAddress(), Integer.parseInt(df.getNumberText(5)))
       );
     }
 

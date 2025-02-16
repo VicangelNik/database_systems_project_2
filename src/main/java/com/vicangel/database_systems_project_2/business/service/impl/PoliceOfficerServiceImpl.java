@@ -21,13 +21,6 @@ final class PoliceOfficerServiceImpl implements PoliceOfficerService {
   private final PoliceOfficerModelEntityMapper mapper;
 
   @Override
-  public PoliceOfficer castUpvote(long officerId, long reportId) {
-    return mapper.mapToModel(
-      repository.castUpvote(officerId, reportId)
-    );
-  }
-
-  @Override
   public long insertMany(Set<PoliceOfficer> policeOfficers) {
     return repository.insertMany(policeOfficers.stream().map(mapper::mapToDocument).collect(Collectors.toSet()));
   }

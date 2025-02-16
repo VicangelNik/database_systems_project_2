@@ -1,6 +1,7 @@
 package com.vicangel.database_systems_project_2.infrastructure.persistence.mongo.document;
 
 import java.util.Date;
+import java.util.Set;
 
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -10,7 +11,7 @@ import lombok.Builder;
 @Document("crime_reports")
 @Builder
 public record CrimeReportDocument(@Indexed(unique = true) Integer drNO,
-                                  Date dateReported,
+                                  @Indexed(name = "date_reported_idx") Date dateReported,
                                   Date dateOCC,
                                   Integer timeOCC,
                                   String areaID,
@@ -36,6 +37,7 @@ public record CrimeReportDocument(@Indexed(unique = true) Integer drNO,
                                   String location,
                                   String crossStreet,
                                   Double latitude,
-                                  Double longitude) {
+                                  Double longitude,
+                                  Set<Long> upvoteByOfficers) {
 
 }

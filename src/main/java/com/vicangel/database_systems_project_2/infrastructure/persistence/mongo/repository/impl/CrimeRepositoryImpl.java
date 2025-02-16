@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Set;
 
 import org.springframework.data.domain.Sort;
+import org.springframework.data.mongodb.core.FindAndModifyOptions;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.aggregation.Aggregation;
 import org.springframework.data.mongodb.core.aggregation.DateOperators;
@@ -16,6 +17,7 @@ import org.springframework.data.mongodb.core.aggregation.SortOperation;
 import org.springframework.data.mongodb.core.aggregation.UnwindOperation;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Repository;
 
 import com.mongodb.BasicDBObject;
@@ -98,5 +100,16 @@ class CrimeRepositoryImpl implements CrimeRepository {
     );
 
     return mongoTemplate.aggregate(aggregation, "crime_reports", ResultQ3DTO.class).getMappedResults();
+  }
+
+  @Override
+  public CrimeReportDocument upvoteReport(long officerId, int drNoReport) {
+
+    return mongoTemplate.findAndModify(
+      Query.query(Criteria.where("drNO").is(drNoReport)),
+      new Update().addToSet("upvoteByOfficers", officerId),
+      FindAndModifyOptions.options().returnNew(true),
+      CrimeReportDocument.class
+    );
   }
 }

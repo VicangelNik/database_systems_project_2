@@ -1,5 +1,6 @@
 package com.vicangel.database_systems_project_2.infrastructure.persistence.mongo.repository.impl;
 
+import java.util.Optional;
 import java.util.Set;
 
 import org.springframework.data.mongodb.core.FindAndModifyOptions;
@@ -36,5 +37,12 @@ class PoliceOfficerDocumentRepositoryImpl implements PoliceOfficerDocumentReposi
 
   public boolean isCollectionEmpty() {
     return mongoTemplate.count(new Query().limit(1), PoliceOfficerDocument.class) > 0;
+  }
+
+  @Override
+  public Optional<PoliceOfficerDocument> findOfficer(long officerId) {
+    return Optional.ofNullable(
+      mongoTemplate.findOne(Query.query(Criteria.where(Fields.UNDERSCORE_ID).is(officerId)), PoliceOfficerDocument.class)
+    );
   }
 }

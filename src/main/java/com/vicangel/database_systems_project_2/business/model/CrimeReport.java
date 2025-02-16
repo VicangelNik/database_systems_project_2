@@ -1,6 +1,7 @@
 package com.vicangel.database_systems_project_2.business.model;
 
 import java.util.Date;
+import java.util.Set;
 
 import lombok.Builder;
 
@@ -32,5 +33,6 @@ public record CrimeReport(Integer drNO,
                           String location,
                           String crossStreet,
                           Double latitude,
-                          Double longitude) {
+                          Double longitude,
+                          Set<Long> upvoteByOfficers) {
 }

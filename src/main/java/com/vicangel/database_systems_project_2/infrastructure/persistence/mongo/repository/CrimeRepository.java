@@ -19,4 +19,6 @@ public interface CrimeRepository {
   List<ResultPerDayDTO> q2(Integer crimeCode1, Date fromDate, Date toDate);
 
   List<ResultQ3DTO> q3(Date day);
+
+  CrimeReportDocument upvoteReport(long officerId, int drNoReport);
 }
